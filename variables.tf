@@ -39,6 +39,10 @@ variable "ssh-key" {
 	default = $PATH_TO_SSH_KEY
 }
 
+variable "my_public_ip" {
+	description = "ssh key path for consul servers"
+	default = $PUBLIC_IP
+}
 
 variable "vault_ip_cidr" {
 	description = "Internal IP range for vault-consul cluster"
