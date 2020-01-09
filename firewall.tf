@@ -1,5 +1,5 @@
 resource "google_compute_firewall" "vault_firewall" {
-	name    = "test-firewall"
+	name    = "vault-cluster-firewall"
 	network = google_compute_network.vault_vpc_network.name
 
 	allow {
@@ -28,4 +28,6 @@ resource "google_compute_firewall" "vault_firewall" {
 		protocol = "udp"
 		ports    = ["7301" ]
 	}
+	
+	source_ranges = [var.vault_ip_cidr, var.my_public_ip]
 }
