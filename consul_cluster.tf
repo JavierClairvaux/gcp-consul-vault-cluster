@@ -11,11 +11,6 @@ resource "google_compute_instance_group" "consul-servers" {
     google_compute_instance.consul_3.self_link,
   ]
 
-  named_port {
-    name = "consul_ui"
-    port = "8500"
-  }
-
   zone = var.gcp_zone
 
 }
