@@ -39,7 +39,7 @@ resource "google_compute_instance" "consul_1" {
 			// Include this section to give the VM an external ip address
 		}
 	}
-	depends_on = [ google_compute_subnetwork.vault_subnet ]
+	depends_on = [ google_compute_subnetwork.vault_subnet, google_compute_firewall.vault_firewall ]
 }
 
 resource "google_compute_instance" "consul_2" {
@@ -61,7 +61,7 @@ resource "google_compute_instance" "consul_2" {
 		subnetwork = google_compute_subnetwork.vault_subnet.self_link 
 		network_ip = var.internal_consul_ip_2
 	}
-	depends_on = [ google_compute_subnetwork.vault_subnet ]
+	depends_on = [ google_compute_subnetwork.vault_subnet, google_compute_firewall.vault_firewall ]
 }
 
 
@@ -84,6 +84,6 @@ resource "google_compute_instance" "consul_3" {
 		subnetwork = google_compute_subnetwork.vault_subnet.self_link 
 		network_ip = var.internal_consul_ip_3
 	}
-	depends_on = [ google_compute_subnetwork.vault_subnet ]
+	depends_on = [ google_compute_subnetwork.vault_subnet, google_compute_firewall.vault_firewall ]
 }
 
